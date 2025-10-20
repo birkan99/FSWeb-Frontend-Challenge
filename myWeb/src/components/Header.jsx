@@ -70,7 +70,7 @@ const Header = () => {
             ></div>
           </button>
         </div>
-
+        <p>|</p>
         {/* Dil Değiştir */}
         <button
           onClick={toggleLanguage}
@@ -88,7 +88,7 @@ const Header = () => {
         </div>
 
         {/* Sağ: Menü */}
-        <nav className="flex items-center gap-6 text-gray-700 font-medium">
+        <nav className="flex items-center text-gray-700 font-medium gap-15">
           <a href="#skills" className="hover:text-purple-600 transition-colors">
             Skills
           </a>

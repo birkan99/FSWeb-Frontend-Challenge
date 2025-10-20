@@ -19,7 +19,7 @@ const Footer = () => {
           <a 
             href={`mailto:${CONTACT_INFO.email}`}
             className="flex items-center gap-2 text-lg font-medium mb-6 sm:mb-0 
-                       text-[#CC3366] hover:underline transition-colors" 
+                       text-[#AF0C48] hover:underline transition-colors" 
           >
             <HiOutlineMailOpen className="w-6 h-6" />
             {CONTACT_INFO.email}
@@ -40,7 +40,7 @@ const Footer = () => {
               href={SOCIAL_LINKS.github} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-gray-700 hover:text-gray-900 transition-colors"
+              className="text-[#00AB6B] hover:text-gray-900 transition-colors"
             >
               Github
             </a>
@@ -50,7 +50,7 @@ const Footer = () => {
               href={SOCIAL_LINKS.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-gray-700 hover:text-gray-900 transition-colors"
+              className="text-[#0077B5] hover:text-gray-900 transition-colors"
             >
               Linkedin
             </a>

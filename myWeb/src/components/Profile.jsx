@@ -4,7 +4,7 @@ import { PROFILE_CONTENT } from "../config";
 const Profile = () => {
   return (
     // Bölümün dış çerçevesi ve padding ayarı
-    <section className="bg-white py-20 px-4 md:px-8 lg:px-12" id="profile">
+    <section className="bg-white py-10 px-4 md:px-8 lg:px-12" id="profile">
       <div className="max-w-6xl mx-auto">
         
         {/* Ana Başlık (Profile) */}
