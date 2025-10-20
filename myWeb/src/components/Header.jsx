@@ -1,15 +1,15 @@
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSettings } from "../context/useSettings"; // Custom Hook'u import et
+import { useSettings } from "../context/useSettings";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const Header = () => {
-  // Context'ten state ve toggle fonksiyonlarını çekme
   const { theme, language, toggleTheme, toggleLanguage } = useSettings();
 
   const handleToggleTheme = () => {
-    toggleTheme();
     const newTheme = theme === "light" ? "dark" : "light";
+    toggleTheme();
     toast.info(
       newTheme === "dark" ? "🌙 Dark mode aktif" : "☀️ Light mode aktif",
       {
@@ -28,50 +28,63 @@ const Header = () => {
       position: "top-left",
       autoClose: 1000,
       hideProgressBar: true,
-      theme: theme,
+      theme,
     });
   };
 
   return (
-    <header className="w-full flex flex-col ">
+    <header className="w-full flex flex-col pt-3 ">
       {/* Üst Bar */}
-      <div className="flex justify-end items-center gap-3 text-sm px-8 py-2 bg-white dark:bg-[#FFFFFF] text-gray-600 dark:text-gray-500">
+      <div className="flex justify-end items-center gap-3 text-sm px-8 py-2 text-gray-600">
         {/* Dark Mode Toggle */}
         <div className="flex items-center gap-2">
-          <span className="uppercase text-sm tracking-wide font-medium text-gray-700 dark:text-gray-400">
-            {theme === "light" ? "Dark Mode" : "Light Mode"}
-          </span>
           <button
             onClick={handleToggleTheme}
-            className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${
-              theme === "dark" ? "bg-gray-600" : "bg-purple-500"
+            className={`relative w-12 h-6 rounded-full flex items-center justify-${
+              theme === "dark" ? "end" : "start"
+            } px-1 transition-colors duration-300 ${
+              theme === "dark" ? "bg-gray-700" : "bg-purple-500"
             }`}
           >
-            <div
-              className={`absolute top-[3px] w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-                theme === "dark" ? "translate-x-6" : "translate-x-1"
-              }`}
-            ></div>
+            <div className="flex justify-center items-center w-5 h-5 rounded-full bg-yellow-400 shadow-md">
+              {theme === "dark" ? (
+                <FiMoon className="text-white w-3.5 h-3.5" />
+              ) : (
+                <FiSun className="text-white w-3.5 h-3.5" />
+              )}
+            </div>
           </button>
+          <span className="uppercase text-sm tracking-wide font-medium text-gray-700">
+            {theme === "light" ? "Dark Mode" : "Light Mode"}
+          </span>
         </div>
+
         <p>|</p>
-        {/* Dil Değiştir */}
+
+        {/* Dil Butonu */}
         <button
           onClick={handleToggleLanguage}
-          className="font-medium hover:underline text-sm tracking-wide uppercase text-gray-700 dark:text-gray-400"
+          className="font-medium hover:underline text-sm tracking-wide uppercase text-gray-700"
         >
-          {language === "tr" ? "SWITCH TO ENGLISH" : "TÜRKÇEYE GEÇ"}
+          {language === "tr" ? (
+            <>
+              SWITCH TO{" "}
+              <span className="text-[#0d00be] font-bold">ENGLISH</span>
+            </>
+          ) : (
+            <>
+              <span className="text-[#0d00be] font-bold">TÜRKÇEYE</span> GEÇ
+            </>
+          )}
         </button>
       </div>
 
       {/* Alt Navigasyon */}
-      <div className="flex justify-between items-center px-10 py-5 bg-white dark:bg-[#FFFFFF]">
-        {/* Sol: Logo */}
-        <div className="w-12 h-12 rounded-full bg-violet-700 dark:bg-violet-700 flex justify-center items-center text-xl font-bold text-white shadow-lg hover:shadow-xl transition-shadow cursor-pointer ml-20">
+      <div className="flex justify-between items-center px-10 py-2">
+        <div className="w-20 h-20 rounded-full bg-[#EEEBFF] text-[#7B61FF] flex justify-center items-center text-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ml-20 p-5 rotate-[+25deg] hover:rotate-0">
           B.S
         </div>
 
-        {/* Sağ: Menü */}
         <nav className="flex items-center text-gray-700 font-medium gap-15">
           <a href="#skills" className="hover:text-purple-600 transition-colors">
             Skills
@@ -90,6 +103,7 @@ const Header = () => {
           </a>
         </nav>
       </div>
+
       <ToastContainer position="top-left" />
     </header>
   );

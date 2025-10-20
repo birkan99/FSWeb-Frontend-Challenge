@@ -1,30 +1,38 @@
+// context/SettingsProvider.jsx
 import React, { useState, useEffect, useMemo } from "react";
 import { SettingsContext } from "./SettingsContext";
 
 export const SettingsProvider = ({ children }) => {
-  // State başlatma helper fonksiyonları
   const getInitialTheme = () => {
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     return savedTheme || (prefersDark ? "dark" : "light");
   };
 
-  const getInitialLanguage = () => {
-    return localStorage.getItem("lang") || "tr";
-  };
-  // Tema ve Dil Değiştirme Fonksiyonları
+  const getInitialLanguage = () => localStorage.getItem("lang") || "tr";
+
   const [theme, setTheme] = useState(getInitialTheme);
   const [language, setLanguage] = useState(getInitialLanguage);
 
-  const toggleTheme = () => {
+  const toggleTheme = () =>
     setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
-  };
-
-  const toggleLanguage = () => {
+  const toggleLanguage = () =>
     setLanguage((currentLang) => (currentLang === "tr" ? "en" : "tr"));
-  };
+
+  // 🌙 Tema renkleri
+  const themeColors = useMemo(() => {
+    return theme === "dark"
+      ? {
+          pageBg: "#252128", // tüm sayfa arkaplanı
+          footerBg: "#141414", // footer arkaplanı
+          textColor: "#FFFFFF",
+        }
+      : {
+          pageBg: "#F9F9F9",
+          footerBg: "#F9F9F9",
+          textColor: "#000000",
+        };
+  }, [theme]);
 
   const contextValue = useMemo(
     () => ({
@@ -32,8 +40,9 @@ export const SettingsProvider = ({ children }) => {
       language,
       toggleTheme,
       toggleLanguage,
+      themeColors, // 🎨 renkleri context’e dahil ettik
     }),
-    [theme, language]
+    [theme, language, themeColors]
   );
 
   useEffect(() => {

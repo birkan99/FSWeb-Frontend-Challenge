@@ -1,3 +1,4 @@
+// App.jsx
 import React from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -5,11 +6,20 @@ import Skills from "./components/Skills";
 import Profile from "./components/Profile";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
-import { SettingsProvider } from './context/SettingsProvider'; 
-const App = () => {
+import { SettingsProvider } from "./context/SettingsProvider";
+import { useSettings } from "./context/useSettings";
+
+// Bu bileşen temaya göre arka planı uygular
+const ThemedContainer = () => {
+  const { themeColors } = useSettings();
+
   return (
-    <SettingsProvider> 
-    <div className="min-h-screen bg-gray-50 dark:bg-[#FFFFFF] transition-colors duration-300">
+    <div
+      style={{
+        backgroundColor: themeColors.pageBg,
+        color: themeColors.textColor,
+      }}
+    >
       <Header />
       <Hero />
       <Skills />
@@ -17,8 +27,13 @@ const App = () => {
       <Projects />
       <Footer />
     </div>
-     </SettingsProvider>
   );
 };
+
+const App = () => (
+  <SettingsProvider>
+    <ThemedContainer />
+  </SettingsProvider>
+);
 
 export default App;
