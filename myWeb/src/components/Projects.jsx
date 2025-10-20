@@ -8,7 +8,7 @@ const Projects = () => {
   const linkStyle =
     "text-sm underline text-[#A78BFA] hover:text-[#C4B5FD] transition-colors font-bold";
   const techTagStyle =
-    "px-3 py-1 text-xs border border-[#A78BFA] rounded-lg hover:bg-[#F0EFFF] transition-colors";
+    "px-3 py-1 text-xs border border-[#A78BFA] rounded-lg hover:bg-violet-800 transition-colors";
 
   return (
     <section

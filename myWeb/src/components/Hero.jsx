@@ -37,7 +37,7 @@ const Hero = () => {
               href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 border border-gray-300 font-medium rounded hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 border border-gray-300 font-medium rounded hover:bg-violet-800 transition-colors"
             >
               <FaGithub className="w-5 h-5" /> Github
             </a>
@@ -45,7 +45,7 @@ const Hero = () => {
               href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 border border-gray-300 font-medium rounded hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 border border-gray-300 font-medium rounded hover:bg-violet-800 transition-colors"
             >
               <FaLinkedinIn className="w-5 h-5" />
               Linkedin
