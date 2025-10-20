@@ -39,7 +39,7 @@ const Header = () => {
     const newLang = language === "tr" ? "en" : "tr";
     setLanguage(newLang);
     localStorage.setItem("lang", newLang);
-    toast.success(newLang === "tr" ? " Türkçe aktif" : "English active", {
+    toast.success(newLang === "tr" ? "Türkçe aktif" : "English active", {
       position: "top-left",
       autoClose: 1000,
       hideProgressBar: true,
@@ -53,7 +53,10 @@ const Header = () => {
       <div className="flex justify-end items-center gap-3 text-sm px-8 py-2 bg-white dark:bg-[#FFFFFF] text-gray-600 dark:text-gray-500">
         {/* Dark Mode Toggle */}
         <div className="flex items-center gap-2">
-          <span className="uppercase text-xs tracking-wide">Dark Mode</span>
+          {/* Hangi moda geçileceğini gösteren metin */}
+          <span className="uppercase text-sm tracking-wide font-medium text-gray-700 dark:text-gray-400">
+            {theme === "light" ? "Dark Mode" : "Light Mode"}
+          </span>
           <button
             onClick={toggleTheme}
             className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${
@@ -71,41 +74,39 @@ const Header = () => {
         {/* Dil Değiştir */}
         <button
           onClick={toggleLanguage}
-          className="font-medium hover:underline text-xs tracking-wide uppercase"
+          className="font-medium hover:underline text-sm tracking-wide uppercase text-gray-700 dark:text-gray-400"
         >
-          {language === "tr" ? "TÜRKÇEYE GEÇ" : "SWITCH TO ENGLISH"}
+          {language === "tr" ? "SWITCH TO ENGLISH" : "TÜRKÇEYE GEÇ"}
         </button>
       </div>
 
       {/* Alt Navigasyon */}
       <div className="flex justify-between items-center px-10 py-5 bg-white dark:bg-[#FFFFFF]">
         {/* Sol: Logo */}
-        <div
-          className="w-12 h-12 rounded-full bg-violet-700 dark:bg-violet-700 
-                   flex justify-center items-center 
-                   text-xl font-bold text-violet-700 dark:text-violet-300 
-                   shadow-lg hover:shadow-xl transition-shadow cursor-pointer ml-20"
-        >
+        <div className="w-12 h-12 rounded-full bg-violet-700 dark:bg-violet-700 flex justify-center items-center text-xl font-bold text-white shadow-lg hover:shadow-xl transition-shadow cursor-pointer ml-20">
           B.S
         </div>
 
         {/* Sağ: Menü */}
-        <nav className="flex items-center gap-18 text-gray-600  font-medium ">
-          <a href="#skills" className="hover:text-purple-600">
+        <nav className="flex items-center gap-6 text-gray-700 font-medium">
+          <a href="#skills" className="hover:text-purple-600 transition-colors">
             Skills
           </a>
-          <a href="#projects" className="hover:text-purple-600">
+          <a
+            href="#projects"
+            className="hover:text-purple-600 transition-colors"
+          >
             Projects
           </a>
           <a
             href="#hire"
-            className="border border-purple-700 text-purple-700 px-4 py-2 rounded-md hover:bg-purple-700 hover:text-white transition"
+            className="border border-purple-700 text-purple-700 px-4 py-2 rounded-md hover:bg-purple-700 hover:text-white transition-colors"
           >
             Hire Me
           </a>
         </nav>
       </div>
-      <ToastContainer />
+      <ToastContainer position="top-left" />
     </header>
   );
 };
