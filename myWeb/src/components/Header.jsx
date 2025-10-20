@@ -27,7 +27,7 @@ const Header = () => {
     toast.info(
       newTheme === "dark" ? "🌙 Dark mode aktif" : "☀️ Light mode aktif",
       {
-        position: "bottom-right",
+        position: "top-left",
         autoClose: 1000,
         hideProgressBar: true,
         theme: newTheme,
@@ -39,8 +39,8 @@ const Header = () => {
     const newLang = language === "tr" ? "en" : "tr";
     setLanguage(newLang);
     localStorage.setItem("lang", newLang);
-    toast.success(newLang === "tr" ? "🇹🇷 Türkçe aktif" : "🇬🇧 English active", {
-      position: "bottom-right",
+    toast.success(newLang === "tr" ? " Türkçe aktif" : "English active", {
+      position: "top-left",
       autoClose: 1000,
       hideProgressBar: true,
       theme: theme,
@@ -84,7 +84,7 @@ const Header = () => {
           className="w-12 h-12 rounded-full bg-violet-700 dark:bg-violet-700 
                    flex justify-center items-center 
                    text-xl font-bold text-violet-700 dark:text-violet-300 
-                   shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                   shadow-lg hover:shadow-xl transition-shadow cursor-pointer ml-20"
         >
           B.S
         </div>
