@@ -21,70 +21,69 @@ export const SKILLS_CONTENT = {
     {
       name: "Java Script",
       description:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Proficiency in writing clean, efficient, and ES6+ compliant JavaScript code for developing modern and dynamic web applications. Deep knowledge of asynchronous operations (Promises, Async/Await), DOM manipulation, and module systems.",
     },
     {
       name: "React.Js",
       description:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Creating reusable, component-based user interfaces (UI). Expertise in state management (useState, useReducer, Redux/Context API), Hooks, and performance optimization (useMemo, useCallback) to develop fast and scalable Single Page Applications (SPA).",
     },
     {
       name: "Java",
       description:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Developing secure and enterprise-level backend applications using Object-Oriented Programming (OOP) principles. Designing and implementing robust, multi-layered, and scalable system architectures with Spring Boot or core Java APIs.",
     },
   ],
 };
 
 export const PROFILE_CONTENT = {
-  title: "Profile", // Ana başlık
+  title: "Profile", // Main title // Left Column: Personal Info
 
-  // Sol Sütun: Kişisel Bilgiler
   personalInfo: [
-    { label: "Doğum tarihi", value: "15.03.1999" },
-    { label: "İkamet Şehri", value: "İzmir" },
+    { label: "Date of Birth", value: "15.03.1999" },
+    { label: "City of Residence", value: "Izmir" },
     {
-      label: "Eğitim Durumu",
-      value: "İzmir Ekonomi Üniversitesi / Yazılım Mühendisliği / Lisans/2024",
+      label: "Education Status",
+      value:
+        "Izmir University of Economics, Software Engineering, Bachelor's Degree, 2024",
     },
-    { label: "Tercih Ettiği Rol", value: "Front-end / Full-Stack developer" },
-  ],
+    { label: "Preferred Role", value: "Front-end / Full-Stack Developer" },
+  ], // Right Column: About Me Text
 
-  // Sağ Sütun: Hakkımda Metni
   aboutMe: {
     title: "About Me",
-    // Rastgele metinler
     paragraphs: [
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aut, odit laborum aliquam voluptatum nisi mollitia. Exercitationem, rerum.",
-      "Minima accusamus ratione soluta aperiam sit voluptatem! Dicta quod deserunt quam temporibus cumque magnam! Quo pariatur asperiores reiciendis eaque.",
+      "I am a Software Engineer with a solid foundation in computer science and experience in web, mobile, and game development. I enjoy developing scalable and user-centric applications using modern technologies. My goal is to produce quality software through clean code, agile methodology, and effective problem-solving approaches. I am a developer who is collaborative, eager to learn, and motivated to create value in dynamic environments.",
     ],
   },
 };
-
 
 export const PROJECTS_CONTENT = {
   title: "Projects",
   projects: [
     {
       name: "Pizza App",
-      image: pizza, 
-      description: "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
-      techStack: ["React", "Tailwind", "axios","Javascript"],
-      githubUrl: "https://github.com/birkan99/fsweb-s8-challenge-pizza", // Github linki
-      viewSiteUrl: "#", // Proje canlı linki
+      image: pizza,
+      description:
+        "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+      techStack: ["React", "Tailwind", "axios", "Javascript"],
+      githubUrl: "https://github.com/birkan99/fsweb-s8-challenge-pizza", // Github link
+      viewSiteUrl: "#", // Live project link
     },
     {
       name: "Random Jokes",
-        image: pizza, 
-      description: "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+      image: pizza,
+      description:
+        "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
       techStack: ["react", "redux", "axios"],
       githubUrl: "#",
       viewSiteUrl: "#",
     },
     {
       name: "Journey",
-        image: pizza, 
-      description: "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
+      image: pizza,
+      description:
+        "A simple, customizable, minimal setup cookie plugin that allows your users to select which cookies to accept or decline. This was created with vanilla JS, SCSS and Parcel Bundler and is available as a NPM package and the git repository makes any type of customization to code and themes possible.",
       techStack: ["react", "redux", "axios"],
       githubUrl: "#",
       viewSiteUrl: "#",
@@ -98,5 +97,5 @@ export const CONTACT_INFO = {
 
 export const FOOTER_CONTENT = {
   title: "Let's work together on your next product.",
-  blogUrl: "/", 
+  blogUrl: "/",
 };

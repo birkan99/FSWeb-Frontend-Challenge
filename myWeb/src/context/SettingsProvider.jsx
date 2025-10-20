@@ -14,9 +14,9 @@ export const SettingsProvider = ({ children }) => {
   const getInitialLanguage = () => {
     return localStorage.getItem("lang") || "tr";
   };
-// Tema ve Dil Değiştirme Fonksiyonları
+  // Tema ve Dil Değiştirme Fonksiyonları
   const [theme, setTheme] = useState(getInitialTheme);
-  const [language, setLanguage] = useState(getInitialLanguage); 
+  const [language, setLanguage] = useState(getInitialLanguage);
 
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
@@ -24,7 +24,7 @@ export const SettingsProvider = ({ children }) => {
 
   const toggleLanguage = () => {
     setLanguage((currentLang) => (currentLang === "tr" ? "en" : "tr"));
-  }; 
+  };
 
   const contextValue = useMemo(
     () => ({
