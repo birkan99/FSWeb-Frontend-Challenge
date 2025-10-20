@@ -35,14 +35,14 @@ const Header = () => {
   return (
     <header className="w-full flex flex-col pt-3 ">
       {/* Üst Bar */}
-      <div className="flex justify-end items-center gap-3 text-sm px-8 py-2 text-gray-600">
+      <div className="flex justify-end items-center gap-3 text-sm px-8 py-2 text-gray-600 ">
         {/* Dark Mode Toggle */}
         <div className="flex items-center gap-2">
           <button
             onClick={handleToggleTheme}
             className={`relative w-12 h-6 rounded-full flex items-center justify-${
               theme === "dark" ? "end" : "start"
-            } px-1 transition-colors duration-300 ${
+            } px-1 transition-colors duration-300 cursor-pointer ${
               theme === "dark" ? "bg-gray-700" : "bg-purple-500"
             }`}
           >
@@ -64,7 +64,7 @@ const Header = () => {
         {/* Dil Butonu */}
         <button
           onClick={handleToggleLanguage}
-          className="font-medium hover:underline text-sm tracking-wide uppercase text-gray-700"
+          className="font-medium hover:underline text-sm tracking-wide uppercase text-gray-700 cursor-pointer"
         >
           {language === "tr" ? (
             <>
@@ -81,12 +81,12 @@ const Header = () => {
 
       {/* Alt Navigasyon */}
       <div className="flex justify-between items-center px-10 py-2">
-        <div className="w-20 h-20 rounded-full bg-[#EEEBFF] text-[#7B61FF] flex justify-center items-center text-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ml-20 p-5 rotate-[+25deg] hover:rotate-0">
+        <div className="w-20 h-20 rounded-full bg-[#EEEBFF] text-[#7B61FF] flex justify-center items-center text-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer cursor-pointer ml-20 p-5 rotate-[+25deg] hover:rotate-0">
           B.S
         </div>
 
         <nav className="flex items-center text-gray-700 font-medium gap-15">
-          <a href="#skills" className="hover:text-purple-600 transition-colors">
+          <a href="#skills" className="hover:text-purple-600 transition-colors cursor-pointer">
             Skills
           </a>
           <a
