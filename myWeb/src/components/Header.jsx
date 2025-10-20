@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSettings } from "../context/useSettings"; // Custom Hook'u import et
 
 const Header = () => {
-  const [theme, setTheme] = useState("light");
-  const [language, setLanguage] = useState("tr");
+  // Context'ten state ve toggle fonksiyonlarını çekme
+  const { theme, language, toggleTheme, toggleLanguage } = useSettings();
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const savedLang = localStorage.getItem("lang");
-
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle("dark", savedTheme === "dark");
-    }
-
-    if (savedLang) setLanguage(savedLang);
-  }, []);
-
-  const toggleTheme = () => {
+  const handleToggleTheme = () => {
+    toggleTheme();
     const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-
     toast.info(
       newTheme === "dark" ? "🌙 Dark mode aktif" : "☀️ Light mode aktif",
       {
@@ -35,10 +21,9 @@ const Header = () => {
     );
   };
 
-  const toggleLanguage = () => {
+  const handleToggleLanguage = () => {
+    toggleLanguage();
     const newLang = language === "tr" ? "en" : "tr";
-    setLanguage(newLang);
-    localStorage.setItem("lang", newLang);
     toast.success(newLang === "tr" ? "Türkçe aktif" : "English active", {
       position: "top-left",
       autoClose: 1000,
@@ -53,12 +38,11 @@ const Header = () => {
       <div className="flex justify-end items-center gap-3 text-sm px-8 py-2 bg-white dark:bg-[#FFFFFF] text-gray-600 dark:text-gray-500">
         {/* Dark Mode Toggle */}
         <div className="flex items-center gap-2">
-          {/* Hangi moda geçileceğini gösteren metin */}
           <span className="uppercase text-sm tracking-wide font-medium text-gray-700 dark:text-gray-400">
             {theme === "light" ? "Dark Mode" : "Light Mode"}
           </span>
           <button
-            onClick={toggleTheme}
+            onClick={handleToggleTheme}
             className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${
               theme === "dark" ? "bg-gray-600" : "bg-purple-500"
             }`}
@@ -73,7 +57,7 @@ const Header = () => {
         <p>|</p>
         {/* Dil Değiştir */}
         <button
-          onClick={toggleLanguage}
+          onClick={handleToggleLanguage}
           className="font-medium hover:underline text-sm tracking-wide uppercase text-gray-700 dark:text-gray-400"
         >
           {language === "tr" ? "SWITCH TO ENGLISH" : "TÜRKÇEYE GEÇ"}

@@ -5,9 +5,10 @@ import Skills from "./components/Skills";
 import Profile from "./components/Profile";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
-
+import { SettingsProvider } from './context/SettingsProvider'; 
 const App = () => {
   return (
+    <SettingsProvider> 
     <div className="min-h-screen bg-gray-50 dark:bg-[#FFFFFF] transition-colors duration-300">
       <Header />
       <Hero />
@@ -16,6 +17,7 @@ const App = () => {
       <Projects />
       <Footer />
     </div>
+     </SettingsProvider>
   );
 };
 
