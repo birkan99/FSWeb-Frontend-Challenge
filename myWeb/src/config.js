@@ -29,3 +29,4 @@ export const CONTACT_CONTENT = {
     errorMessage: 'Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.',
   },
 };
+

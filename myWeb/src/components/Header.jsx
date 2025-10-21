@@ -7,7 +7,7 @@ const Header = () => {
   const { theme, language, toggleTheme, toggleLanguage } = useSettings();
 
   const hireMeButtonText = language === "tr" ? "Bana Ulaşın" : "Hire Me";
-  const skillsText = language === "tr" ? "Yetenekler" : "Skills";
+const skillsText = language === "tr" ? "Yetenekler" : "Skills";
   const projectsText = language === "tr" ? "Projeler" : "Projects";
   return (
     <header className="w-full flex flex-col pt-3 ">

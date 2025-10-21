@@ -133,7 +133,7 @@ export const API_SIMULATION_DATA = {
       title: "Profile",
       personalInfo: [
         { label: "Date of Birth", value: "15.03.1999" },
-        { label: "City ​​of Residence", value: "Izmir" },
+        { label: "City of Residence", value: "Izmir" },
         {
           label: "Education Status",
           value:

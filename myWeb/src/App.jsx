@@ -10,7 +10,7 @@ import { DataProvider } from "./context/DataProvider";
 import { useSettings } from "./context/useSettings";
 import { useData } from "./context/useData";
 import { ToastContainer } from "react-toastify";
-import ContactForm from "./components/ContactForm";
+// import ContactForm from "./components/ContactForm";
 
 // Yükleme sırasında gösterilecek 
 const LoadingScreen = ({ themeColors }) => (
