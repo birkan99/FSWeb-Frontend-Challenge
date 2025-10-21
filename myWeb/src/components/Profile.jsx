@@ -34,7 +34,7 @@ const Profile = () => {
               {PROFILE_CONTENT.personalInfo.map((item, index) => (
                 <div key={index} className="flex flex-col sm:flex-row sm:gap-4">
                   <span className="font-semibold w-40">{item.label}:</span>
-                  <span className="opacity-80 mt-1 sm:mt-0">{item.value}</span>
+                  <span className="opacity-80 mt-1 sm:mt-0" style={{ whiteSpace: "pre-line" }}>{item.value}</span>
                 </div>
               ))}
             </div>

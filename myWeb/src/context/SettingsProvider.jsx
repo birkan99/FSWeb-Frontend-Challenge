@@ -27,10 +27,10 @@ export const SettingsProvider = ({ children }) => {
       ? {
           pageBg: "#252128",
           footerBg: "#141414",
-          textColor: "#FFFFFF",
+          textColor: "#AEBCCF",
         }
       : {
-          pageBg: "#F9F9F9",
+          pageBg: "#FFFFFF",
           footerBg: "#F9F9F9",
           textColor: "#000000",
         };

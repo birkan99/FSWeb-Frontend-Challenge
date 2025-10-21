@@ -16,10 +16,6 @@ export const DataProvider = ({ children }) => {
     //  Caching kontrolü
     if (cachedData[lang]) {
       setData(cachedData[lang]);
-      toast.info(
-        lang === "tr" ? "Veri önbellekten yüklendi." : "Data loaded from cache.",
-        { autoClose: 1000, theme, position: "bottom-right" }
-      );
       return; // Yeniden istek atılmaması 
     }
 
@@ -29,14 +25,8 @@ export const DataProvider = ({ children }) => {
 
     try {
       const result = await fetchApiData(lang);
-      
       setData(result);
       setCachedData((prev) => ({ ...prev, [lang]: result })); // Önbelleğe kaydet
-
-      toast.success(
-        lang === "tr" ? "Veriler başarıyla yüklendi!" : "Data loaded successfully!",
-        { autoClose: 1000, theme, position: "bottom-right" }
-      );
     } catch (error) {
       console.error("API Fetch Error:", error.message);
       setIsError(error.message);

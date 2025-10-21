@@ -6,6 +6,8 @@ import { FiSun, FiMoon } from "react-icons/fi";
 const Header = () => {
   const { theme, language, toggleTheme, toggleLanguage } = useSettings();
 
+  const hireMeButtonText = language === "tr" ? "Bana Ulaşın" : "Hire Me";
+
   return (
     <header className="w-full flex flex-col pt-3 ">
       {/* Üst Bar */}
@@ -43,11 +45,11 @@ const Header = () => {
           {language === "tr" ? (
             <>
               SWITCH TO{" "}
-              <span className="text-[#0d00be] font-bold">ENGLISH</span>
+              <span className="text-[#AEBCCF] font-bold">ENGLISH</span>
             </>
           ) : (
             <>
-              <span className="text-[#0d00be] font-bold">TÜRKÇEYE</span> GEÇ
+              <span className="text-[#AEBCCF] font-bold">TÜRKÇEYE</span> GEÇ
             </>
           )}
         </button>
@@ -76,7 +78,7 @@ const Header = () => {
             href="#hire"
             className="border border-purple-700 text-purple-700 px-4 py-2 rounded-md hover:bg-purple-700 hover:text-white transition-colors"
           >
-            Hire Me
+            {hireMeButtonText}
           </a>
         </nav>
       </div>

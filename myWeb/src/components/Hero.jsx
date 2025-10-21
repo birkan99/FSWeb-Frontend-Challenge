@@ -5,9 +5,14 @@ import { useSettings } from "../context/useSettings";
 import { useData } from "../context/useData";
 
 const Hero = () => {
-  const { themeColors } = useSettings();
+  const { themeColors, language } = useSettings();
   const { data } = useData();
-  const HERO_CONTENT = data ? data.hero : {};
+  if (!data || !data.hero) {
+    return null;
+  }
+
+  const HERO_CONTENT = data.hero;
+  const hireMeText = language === "tr" ? "Bana Ulaşın" : "Hire me";
 
   return (
     <section
@@ -39,7 +44,7 @@ const Hero = () => {
               href={SOCIAL_LINKS.hireMe}
               className="px-6 py-3 bg-[#4B30A4] text-white font-medium rounded hover:bg-violet-800 transition-colors"
             >
-              Hire me
+              {hireMeText}
             </a>
             <a
               href={SOCIAL_LINKS.github}
