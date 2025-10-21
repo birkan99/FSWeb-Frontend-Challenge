@@ -1,9 +1,10 @@
-
+import profileImage from "../assets/5-fav.jpg";
+import pizza from "../assets/pizza.png";
 
 export const API_SIMULATION_DATA = {
   tr: {
     hero: {
-      profilePicture: "/5-fav.jpg",
+      profilePicture: profileImage,
       name: "Birkan Sarıbacak",
       titleLine1: "Yaratıcı düşünen",
       titleLine2: "Minimalizm aşığı",
@@ -34,7 +35,7 @@ export const API_SIMULATION_DATA = {
       projects: [
         {
           name: "Pizza App",
-          image: "/pizza.png",
+          image: pizza,
           description:
             "React ile geliştirilmiş, kullanıcı dostu arayüze sahip bir Tek Sayfa Uygulaması (SPA) olan bu proje, dinamik form yönetimi ve routing yeteneklerimi sergilemektedir. Sipariş formundan gelen veriler, sahte bir API çağrısı ile asenkron olarak yönetilir ve sonuç sayfasında gösterilir. ",
           techStack: [
@@ -81,7 +82,7 @@ export const API_SIMULATION_DATA = {
   },
   en: {
     hero: {
-      profilePicture: "/5-fav.jpg",
+      profilePicture: profileImage,
       name: "Birkan Sarıbacak",
       titleLine1: "Creative thinker",
       titleLine2: "Minimalism lover",
@@ -112,7 +113,7 @@ export const API_SIMULATION_DATA = {
       projects: [
         {
           name: "Pizza App",
-          image: "/pizza.png",
+          image: pizza,
           description:
             "This Single Page Application (SPA), developed using React and Tailwind CSS, showcases my skills in comprehensive form management, validation with Yup, page transitions with React Router, and managing asynchronous data flow by simulating a fake API POST request using Axios. It features a user-friendly and responsive design.",
           techStack: [
@@ -161,15 +162,17 @@ export const API_SIMULATION_DATA = {
  * @returns {Promise<object>} İstenen dildeki verileri içeren Promise
  */
 export const fetchApiData = async (lang) => {
-  // console.log(`Simulating POST request for language: ${lang}`);
+  console.log(`Simulating POST request for language: ${lang}`);
 
-  // // 1.5 saniyelik ağ gecikmesi simülasyonu
-  // await new Promise((resolve) => setTimeout(resolve, 1500));
+  // 1.5 saniyelik ağ gecikmesi simülasyonu
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const data = API_SIMULATION_DATA[lang];
-  // if (!data) {
-  //   throw new Error(`Veri bulunamadı: ${lang}`);
-  // }
+  if (!data) {
+    throw new Error(`Veri bulunamadı: ${lang}`);
+  }
 
-return data || API_SIMULATION_DATA.tr;
+  return data;
 };
+
+

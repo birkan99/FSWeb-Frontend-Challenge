@@ -9,44 +9,46 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(null);
-  const [cachedData, setCachedData] = useState({}); 
+  const [cachedData, setCachedData] = useState({});
 
   // burada
 
-  // Veri çekme fonksiyonu - Caching ve Hata Yönetimi 
-  const fetchData = useCallback(async (lang) => {
-    //  Caching kontrolü
-    if (cachedData[lang]) {
-      setData(cachedData[lang]);
-      return; // Yeniden istek atılmaması 
-    }
+  // Veri çekme fonksiyonu - Caching ve Hata Yönetimi
+  const fetchData = useCallback(
+    async (lang) => {
+      //  Caching kontrolü
+      if (cachedData[lang]) {
+        setData(cachedData[lang]);
+        return; // Yeniden istek atılmaması
+      }
 
-    setIsLoading(true); // Yükleme  geri bildirimi
-    setIsError(null);
-    setData(null);
+      setIsLoading(true); // Yükleme  geri bildirimi
+      setIsError(null);
+      setData(null);
 
-    try {
-      const result = await fetchApiData(lang);
-      setData(result);
-      setCachedData((prev) => ({ ...prev, [lang]: result })); // Önbelleğe kaydet
-    } catch (error) {
-      console.error("API Fetch Error:", error.message);
-      setIsError(error.message);
-      
-      // VERCEL HATA DÜZELTMESİ: Hata durumunda ErrorScreen'in açılmasına neden olan 
-      // toast.error çağrısı, build/yükleme aşamasındaki hataları önlemek için 
-      // geçici olarak yorum satırı yapıldı.
-      /*
+      try {
+        const result = await fetchApiData(lang);
+        setData(result);
+        setCachedData((prev) => ({ ...prev, [lang]: result })); // Önbelleğe kaydet
+      } catch (error) {
+        console.error("API Fetch Error:", error.message);
+        setIsError(error.message);
+
+        // VERCEL HATA DÜZELTMESİ: Hata durumunda ErrorScreen'in açılmasına neden olan
+        // toast.error çağrısı, build/yükleme aşamasındaki hataları önlemek için
+        // geçici olarak yorum satırı yapıldı.
+        /*
       toast.error(
         lang === "tr" ? `Hata: ${error.message}` : `Error: ${error.message}`,
         { autoClose: 3000, theme, position: "bottom-right" }
       );
       */
-      
-    } finally {
-      setIsLoading(false);
-    }
-  }, [cachedData, theme]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [cachedData, theme]
+  );
 
   // Dil her değiştiğinde veriyi çek
   useEffect(() => {
@@ -61,8 +63,6 @@ export const DataProvider = ({ children }) => {
   };
 
   return (
-    <DataContext.Provider value={contextValue}>
-      {children}
-    </DataContext.Provider>
+    <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
 };

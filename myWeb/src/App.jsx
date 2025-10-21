@@ -8,10 +8,11 @@ import Footer from "./components/Footer";
 import { SettingsProvider } from "./context/SettingsProvider";
 import { DataProvider } from "./context/DataProvider";
 import { useSettings } from "./context/useSettings";
+import { useData } from "./context/useData";
 import { ToastContainer } from "react-toastify";
 // import ContactForm from "./components/ContactForm";
 
-// Yükleme sırasında gösterilecek (Artık kullanılmayacak)
+// Yükleme sırasında gösterilecek
 const LoadingScreen = ({ themeColors }) => (
   <div
     style={{
@@ -30,7 +31,7 @@ const LoadingScreen = ({ themeColors }) => (
   </div>
 );
 
-// Hata durumunda gösterilecek (Artık kullanılmayacak)
+// Hata durumunda gösterilecek
 const ErrorScreen = ({ themeColors, isError }) => (
   <div
     style={{
@@ -42,7 +43,7 @@ const ErrorScreen = ({ themeColors, isError }) => (
       alignItems: "center",
       fontSize: "2rem",
       flexDirection: "column",
-      textAlign: "center"
+      textAlign: "center",
     }}
   >
     <h1 className="text-red-500 text-3xl mb-4">Hata! Veriler Yüklenemedi.</h1>
@@ -53,12 +54,15 @@ const ErrorScreen = ({ themeColors, isError }) => (
 
 const ThemedContainer = () => {
   const { themeColors } = useSettings();
-  // useData hook'u hala kullanılıyor, çünkü bileşenler veriyi buradan alacak.
-  // const { data, isLoading, isError } = useData(); 
+  const { data, isLoading, isError } = useData();
 
-  // TÜM KONTROLLER KALDIRILDI. Direkt olarak içeriği döndürüyoruz.
-  // Artık Header, Hero gibi bileşenler data'yı useData() üzerinden çekip 
-  // kendi içlerinde null kontrolü yapmazsa hata alabilirler.
+  if (isError) {
+    return <ErrorScreen themeColors={themeColors} isError={isError} />;
+  }
+
+  if (isLoading || !data) {
+    return <LoadingScreen themeColors={themeColors} />;
+  }
 
   return (
     <div
@@ -81,7 +85,7 @@ const ThemedContainer = () => {
 const App = () => (
   <>
     <SettingsProvider>
-      <DataProvider> 
+      <DataProvider>
         <ThemedContainer />
       </DataProvider>
     </SettingsProvider>
