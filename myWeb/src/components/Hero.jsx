@@ -41,7 +41,7 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <a
-              href={SOCIAL_LINKS.hireMe}
+              href="#contact"
               className="px-6 py-3 bg-[#4B30A4] text-white font-medium rounded hover:bg-violet-800 transition-colors"
             >
               {hireMeText}

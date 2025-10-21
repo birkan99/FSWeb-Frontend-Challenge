@@ -7,7 +7,8 @@ const Header = () => {
   const { theme, language, toggleTheme, toggleLanguage } = useSettings();
 
   const hireMeButtonText = language === "tr" ? "Bana Ulaşın" : "Hire Me";
-
+  const skillsText = language === "tr" ? "Yetenekler" : "Skills";
+  const projectsText = language === "tr" ? "Projeler" : "Projects";
   return (
     <header className="w-full flex flex-col pt-3 ">
       {/* Üst Bar */}
@@ -66,16 +67,16 @@ const Header = () => {
             href="#skills"
             className="hover:text-purple-600 transition-colors cursor-pointer"
           >
-            Skills
+            {skillsText}
           </a>
           <a
             href="#projects"
             className="hover:text-purple-600 transition-colors"
           >
-            Projects
+            {projectsText}
           </a>
           <a
-            href="#hire"
+            href="#contact"
             className="border border-purple-700 text-purple-700 px-4 py-2 rounded-md hover:bg-purple-700 hover:text-white transition-colors"
           >
             {hireMeButtonText}

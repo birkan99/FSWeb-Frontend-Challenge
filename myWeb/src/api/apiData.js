@@ -76,7 +76,7 @@ export const API_SIMULATION_DATA = {
       },
     },
     footer: {
-      title: "Beni sosyal medyada takip edin!",
+      title: "Bir sonraki ürününüz üzerinde birlikte çalışalım.",
       blogUrl: "#",
     },
   },
@@ -88,7 +88,6 @@ export const API_SIMULATION_DATA = {
       titleLine2: "Minimalism lover",
       bio: "Hi, I'm Birkan. I'm a full-stack developer. If you are looking for a Developer who to craft solid and scalable frontend products with great user experiences. Let's shake hands with me.",
     },
-    // ... Diğer İngilizce içerikler (skills, projects, profile, footer) buraya eklenecektir
     skills: {
       title: "Skills",
       skills: [
