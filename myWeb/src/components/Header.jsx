@@ -55,7 +55,7 @@ const Header = () => {
 
       {/* Alt Navigasyon */}
       <div className="flex justify-between items-center px-10 py-2">
-        <div className="w-20 h-20 rounded-full bg-[#EEEBFF] text-[#7B61FF] flex justify-center items-center text-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300  cursor-pointer ml-20 p-5 rotate-[+25deg] hover:rotate-0">
+        <div className="w-20 h-20 rounded-full bg-[#EEEBFF] text-[#7B61FF] flex justify-center items-center text-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300  cursor-pointer ml-20 p-5 rotate-25 hover:rotate-0">
           B.S
         </div>
 
