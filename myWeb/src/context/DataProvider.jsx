@@ -11,6 +11,8 @@ export const DataProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
   const [cachedData, setCachedData] = useState({}); 
 
+  // burada
+
   // Veri çekme fonksiyonu - Caching ve Hata Yönetimi 
   const fetchData = useCallback(async (lang) => {
     //  Caching kontrolü
