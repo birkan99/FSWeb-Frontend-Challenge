@@ -6,7 +6,7 @@ import { useData } from "../context/useData";
 
 const Footer = () => {
   const { theme, themeColors } = useSettings();
-  const { data } = useData(); //  DataProvider'dan veriyi çekme
+  const { data } = useData(); 
 
   // Veri yüklenmediyse bileşeni render etme
   if (!data || !data.footer) {
