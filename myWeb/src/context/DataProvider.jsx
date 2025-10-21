@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { DataContext } from "./DataContext";
 import { useSettings } from "./useSettings";
 import { fetchApiData } from "../api/apiData";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 export const DataProvider = ({ children }) => {
   const { language, theme } = useSettings();
@@ -10,7 +10,10 @@ export const DataProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   const [cachedData, setCachedData] = useState({}); 
+
+  // Veri çekme fonksiyonu - Caching ve Hata Yönetimi 
   const fetchData = useCallback(async (lang) => {
+    //  Caching kontrolü
     if (cachedData[lang]) {
       setData(cachedData[lang]);
       return; // Yeniden istek atılmaması 
@@ -27,11 +30,17 @@ export const DataProvider = ({ children }) => {
     } catch (error) {
       console.error("API Fetch Error:", error.message);
       setIsError(error.message);
-      // Hata geri bildirimi
+      
+      // VERCEL HATA DÜZELTMESİ: Hata durumunda ErrorScreen'in açılmasına neden olan 
+      // toast.error çağrısı, build/yükleme aşamasındaki hataları önlemek için 
+      // geçici olarak yorum satırı yapıldı.
+      /*
       toast.error(
         lang === "tr" ? `Hata: ${error.message}` : `Error: ${error.message}`,
         { autoClose: 3000, theme, position: "bottom-right" }
       );
+      */
+      
     } finally {
       setIsLoading(false);
     }

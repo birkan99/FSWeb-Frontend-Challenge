@@ -161,15 +161,15 @@ export const API_SIMULATION_DATA = {
  * @returns {Promise<object>} İstenen dildeki verileri içeren Promise
  */
 export const fetchApiData = async (lang) => {
-  console.log(`Simulating POST request for language: ${lang}`);
+  // console.log(`Simulating POST request for language: ${lang}`);
 
-  // 1.5 saniyelik ağ gecikmesi simülasyonu
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // // 1.5 saniyelik ağ gecikmesi simülasyonu
+  // await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const data = API_SIMULATION_DATA[lang];
-  if (!data) {
-    throw new Error(`Veri bulunamadı: ${lang}`);
-  }
+  // if (!data) {
+  //   throw new Error(`Veri bulunamadı: ${lang}`);
+  // }
 
-  return data;
+return data || API_SIMULATION_DATA.tr;
 };

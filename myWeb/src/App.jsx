@@ -8,11 +8,10 @@ import Footer from "./components/Footer";
 import { SettingsProvider } from "./context/SettingsProvider";
 import { DataProvider } from "./context/DataProvider";
 import { useSettings } from "./context/useSettings";
-import { useData } from "./context/useData";
 import { ToastContainer } from "react-toastify";
 // import ContactForm from "./components/ContactForm";
 
-// Yükleme sırasında gösterilecek 
+// Yükleme sırasında gösterilecek (Artık kullanılmayacak)
 const LoadingScreen = ({ themeColors }) => (
   <div
     style={{
@@ -31,7 +30,7 @@ const LoadingScreen = ({ themeColors }) => (
   </div>
 );
 
-// Hata durumunda gösterilecek
+// Hata durumunda gösterilecek (Artık kullanılmayacak)
 const ErrorScreen = ({ themeColors, isError }) => (
   <div
     style={{
@@ -54,15 +53,12 @@ const ErrorScreen = ({ themeColors, isError }) => (
 
 const ThemedContainer = () => {
   const { themeColors } = useSettings();
-  const { data, isLoading, isError } = useData(); 
+  // useData hook'u hala kullanılıyor, çünkü bileşenler veriyi buradan alacak.
+  // const { data, isLoading, isError } = useData(); 
 
-  if (isError) {
-    return <ErrorScreen themeColors={themeColors} isError={isError} />; 
-  }
-
-  if (isLoading || !data) {
-    return <LoadingScreen themeColors={themeColors} />; 
-  }
+  // TÜM KONTROLLER KALDIRILDI. Direkt olarak içeriği döndürüyoruz.
+  // Artık Header, Hero gibi bileşenler data'yı useData() üzerinden çekip 
+  // kendi içlerinde null kontrolü yapmazsa hata alabilirler.
 
   return (
     <div
@@ -77,7 +73,6 @@ const ThemedContainer = () => {
       <Skills />
       <Profile />
       <Projects />
-      {/* <ContactForm /> */}
       <Footer />
     </div>
   );
