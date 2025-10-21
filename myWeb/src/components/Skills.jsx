@@ -1,13 +1,21 @@
 import React from "react";
-import { SKILLS_CONTENT } from "../config";
 import { useSettings } from "../context/useSettings";
-
+import { useData } from "../context/useData";
 const Skills = () => {
   const { themeColors } = useSettings();
+  const { data } = useData();
+  if (!data || !data.skills) {
+    return null;
+  }
+
+  const SKILLS_CONTENT = data.skills;
 
   return (
     <section
-      style={{ backgroundColor: themeColors.pageBg, color: themeColors.textColor }}
+      style={{
+        backgroundColor: themeColors.pageBg,
+        color: themeColors.textColor,
+      }}
       className="py-20 px-4 md:px-8 lg:px-12 transition-colors duration-300"
       id="skills"
     >

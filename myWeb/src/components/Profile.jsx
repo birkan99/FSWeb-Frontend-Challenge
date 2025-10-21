@@ -1,14 +1,23 @@
 import React from "react";
-import { PROFILE_CONTENT } from "../config";
 import { useSettings } from "../context/useSettings";
+import { useData } from "../context/useData";
 
 const Profile = () => {
   const { themeColors } = useSettings();
+  const { data } = useData();
 
+  if (!data || !data.profile) {
+    return null;
+  }
+
+  const PROFILE_CONTENT = data.profile;
   return (
     <section
       id="profile"
-      style={{ backgroundColor: themeColors.pageBg, color: themeColors.textColor }}
+      style={{
+        backgroundColor: themeColors.pageBg,
+        color: themeColors.textColor,
+      }}
       className="py-10 px-4 md:px-8 lg:px-12 transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto">

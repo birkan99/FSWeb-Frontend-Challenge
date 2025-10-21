@@ -1,19 +1,28 @@
 import React from "react";
-import { PROJECTS_CONTENT } from "../config";
 import { useSettings } from "../context/useSettings";
+import { useData } from "../context/useData";
 
 const Projects = () => {
   const { themeColors } = useSettings();
+  const { data } = useData();
+
+  if (!data || !data.projects) {
+    return null;
+  }
+
+  const PROJECTS_CONTENT = data.projects;
 
   const linkStyle =
     "text-sm underline text-[#A78BFA] hover:text-[#C4B5FD] transition-colors font-bold";
   const techTagStyle =
     "px-3 py-1 text-xs border border-[#A78BFA] rounded-lg hover:bg-violet-800 transition-colors";
-
   return (
     <section
       id="projects"
-      style={{ backgroundColor: themeColors.pageBg, color: themeColors.textColor }}
+      style={{
+        backgroundColor: themeColors.pageBg,
+        color: themeColors.textColor,
+      }}
       className="py-10 px-4 md:px-8 lg:px-12 transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto">
@@ -45,10 +54,20 @@ const Projects = () => {
                 ))}
               </div>
               <div className="flex justify-between mt-auto">
-                <a href={project.githubUrl} target="_blank" rel="noreferrer" className={linkStyle}>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={linkStyle}
+                >
                   Github
                 </a>
-                <a href={project.viewSiteUrl} target="_blank" rel="noreferrer" className={linkStyle}>
+                <a
+                  href={project.viewSiteUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={linkStyle}
+                >
                   View Site
                 </a>
               </div>

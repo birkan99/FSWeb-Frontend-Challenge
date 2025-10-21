@@ -1,10 +1,18 @@
 import React from "react";
-import { SOCIAL_LINKS, CONTACT_INFO, FOOTER_CONTENT } from "../config";
+import { SOCIAL_LINKS, CONTACT_INFO } from "../config";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { useSettings } from "../context/useSettings";
+import { useData } from "../context/useData";
 
 const Footer = () => {
   const { theme, themeColors } = useSettings();
+  const { data } = useData(); //  DataProvider'dan veriyi çekme
+
+  // Veri yüklenmediyse bileşeni render etme
+  if (!data || !data.footer) {
+    return null;
+  }
+  const FOOTER_CONTENT = data.footer;
 
   return (
     <footer
@@ -42,7 +50,7 @@ const Footer = () => {
               href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#00AB6B] hover:bg-violet-800 transition-colors"
+              className="text-[#00AB6B] hover:text-gray-900 transition-colors"
             >
               Github
             </a>
@@ -50,7 +58,7 @@ const Footer = () => {
               href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0077B5] hover:bg-violet-800 transition-colors"
+              className="text-[#0077B5] hover:text-gray-900 transition-colors"
             >
               Linkedin
             </a>

@@ -1,14 +1,20 @@
 import React from "react";
-import { SOCIAL_LINKS, HERO_CONTENT } from "../config";
+import { SOCIAL_LINKS } from "../config";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useSettings } from "../context/useSettings";
+import { useData } from "../context/useData";
 
 const Hero = () => {
   const { themeColors } = useSettings();
+  const { data } = useData();
+  const HERO_CONTENT = data ? data.hero : {};
 
   return (
     <section
-      style={{ backgroundColor: themeColors.pageBg, color: themeColors.textColor }}
+      style={{
+        backgroundColor: themeColors.pageBg,
+        color: themeColors.textColor,
+      }}
       className="transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto py-24 px-4 md:px-8 lg:px-12 flex flex-col lg:flex-row items-center lg:justify-between gap-16 lg:gap-24">
@@ -16,7 +22,9 @@ const Hero = () => {
         <div className="flex flex-col text-center lg:text-left w-full lg:w-3/5">
           <div className="flex items-center justify-center lg:justify-start mb-6">
             <div className="w-8 h-0.5 bg-[#A78BFA] mr-3"></div>
-            <p className="text-base font-normal text-[#A78BFA]">{HERO_CONTENT.name}</p>
+            <p className="text-base font-normal text-[#A78BFA]">
+              {HERO_CONTENT.name}
+            </p>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-8 max-w-xl mx-auto lg:mx-0">
             {HERO_CONTENT.titleLine1} <br />
